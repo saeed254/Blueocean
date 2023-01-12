@@ -34,6 +34,7 @@ pipeline {
       parallel {
         stage('Deploy ') {
           steps {
+            input(message: 'are you sure to Deploy', ok: 'Yes, I\'m sure')
             echo 'Running Deployment '
           }
         }
@@ -44,6 +45,12 @@ pipeline {
           }
         }
 
+      }
+    }
+
+    stage('Notify') {
+      steps {
+        echo 'Deploy Completed'
       }
     }
 
